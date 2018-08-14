@@ -1,0 +1,24 @@
+#dropZone.hover {
+    background: #ddd;
+    border-color: #aaa;
+  }
+  #dropZone.error {
+    background: #faa;
+    border-color: #f00;
+  }
+  #dropZone.drop {
+    background: #afa;
+    border-color: #0f0;
+  }
+  .input-file {
+    visibility: hidden;
+  }
+  .drop-zone {
+    cursor: pointer;
+    height: 70px;
+    font-size: 1.5em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }  
