@@ -46,9 +46,17 @@ table {
 table, td {
     border: 1px solid black;
 }
-tr:first-child span {
-    display: inline-block;
+td div{
+    text-align: center;
+    width: var(--cell-size);
+    /* height: var(--cell-size);
+    min-width: var(--cell-size);
+    min-height: var(--cell-size); */
 }
-td:first-child {
-    text-align:end;
+tr:first-child td{
+    vertical-align: bottom;
+}
+td:first-child span{
+    display: flex;
+    justify-content: flex-end;
 }

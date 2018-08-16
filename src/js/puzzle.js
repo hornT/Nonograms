@@ -72,17 +72,25 @@ class Puzzle{
         const s = cellsInfo.split(' ');
 
         const count = parseInt(s[0]);
-        const result = [];
+        const groups = new Array(count);
         
         for (let i = 0; i < count; i++) {
 
             let left = i * 4 + 1;
             let groupInfo = s.slice(left, left + 4);
 
-            result.push(this._parseGroupInfo(groupInfo));
+            groups[i] = this._parseGroupInfo(groupInfo);
         }
 
-        return result;
+        const colorBits = groups
+            .map(g => g.ColorIndex)
+            .filter(onlyUnique)
+            .reduce((prev, curr) => prev | (1 << curr), 0);
+
+        return {
+            Groups: groups,
+            ColorBits: colorBits
+        };
     }
 
     _parseGroupInfo(groupInfo){
@@ -96,7 +104,7 @@ class Puzzle{
         return {
             Count: cellCount,
             Color: hexColor,
-            ColorIndex: this._getColorIndex(r, g, b)
+            ColorIndex: this._getColorIndex(hexColor)
         };
     }
 
@@ -107,5 +115,21 @@ class Puzzle{
 
     Solve(){
 
+        this._createEmptyCells();
+    }
+
+    _createEmptyCells(){
+
+        this.Cells = new Array(this.RowCount);
+
+        for (let i = 0; i < this.RowCount; i++) {
+            this.Cells[i] = new Array(this.ColumnCount);
+
+            for (let j = 0; j < this.ColumnCount; j++) {
+                this.Cells[i][j] = {
+                    Info: this.RowsInfo[i].ColorBits & this.ColumnsInfo[j].ColorBits
+                }
+            }
+        }
     }
 }
