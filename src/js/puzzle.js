@@ -91,18 +91,18 @@ class Puzzle{
         let r = parseInt(groupInfo[1]);
         let g = parseInt(groupInfo[2]);
         let b = parseInt(groupInfo[3]);
+        let hexColor = rgbToHex(r, g, b);
 
         return {
             Count: cellCount,
+            Color: hexColor,
             ColorIndex: this._getColorIndex(r, g, b)
         };
     }
 
-    _getColorIndex(r, g, b){
+    _getColorIndex(hexColor){
 
-        const hColor = rgbToHex(r, g, b);
-
-        return this.Colors.indexOf(hColor);
+        return this.Colors.indexOf(hexColor);
     }
 
     Solve(){

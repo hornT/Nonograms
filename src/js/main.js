@@ -84,9 +84,7 @@ function drawSolvedPuzzle(puzzle){
     for (let i = 0; i < puzzle.RowCount; i++) {
         let row = document.createElement('tr');
 
-        // TODO add groups info
         const rowInfo = puzzle.RowsInfo[i];
-        //let cellInfo = document.createElement('td');
         let cellInfo = createCellInfo(rowInfo);
         row.appendChild(cellInfo);
 
@@ -113,17 +111,8 @@ function createFirstRow(puzzle){
 
     for (let i = 0; i < puzzle.ColumnCount; i++) {
         
-        // TODO add groups info
         const columnInfo = puzzle.ColumnsInfo[i];
         let cell = createCellInfo(columnInfo);
-
-        // for(let j = 0; j < columnInfo.length; j++){
-        //     let span = document.createElement('span');
-        //     span.innerHTML = columnInfo[j].Count;
-        //     // TODO color span.
-
-        //     cell.appendChild(span);
-        // }
         
         row.appendChild(cell);
     }
@@ -137,7 +126,7 @@ function createCellInfo(info){
     for(let j = 0; j < info.length; j++){
         let span = document.createElement('span');
         span.innerHTML = info[j].Count;
-        // TODO color span.
+        span.style.backgroundColor = info[j].Color;
 
         cell.appendChild(span);
     }
