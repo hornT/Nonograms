@@ -65,17 +65,57 @@ function onFileLoad(e, fileName) {
     const fileText = atob(data.split(',')[1]);
 
     const puzzle = new Puzzle(fileText);
-    
 
-    //drowPuzzle(puzzle);
     puzzle.Solve();
-    drowSolvedPuzzle(puzzle);
+    drawSolvedPuzzle(puzzle);
 }
 
-// function drowPuzzle(puzzle){
+function drawSolvedPuzzle(puzzle){
 
-// }
+    const puzzleContainer = document.querySelector('#solvePuzzle');
+    
+    puzzleContainer.innerHTML = '';
 
-function drowSolvedPuzzle(puzzle){
+    const table = document.createElement('table');
+    const firstRow = createFirstRow(puzzle);
 
+    table.appendChild(firstRow);
+
+    for (let i = 0; i < puzzle.RowCount; i++) {
+        let row = document.createElement('tr');
+
+        // TODO add groups info
+        let cellInfo = document.createElement('td');
+        row.appendChild(cellInfo);
+
+        for (let j = 0; j < puzzle.ColumnCount; j++){
+            let cell = document.createElement('td');
+
+            // TODO cell color
+
+            row.appendChild(cell);
+        }
+        
+        table.appendChild(row);
+    }
+
+    puzzleContainer.appendChild(table);
+}
+
+function createFirstRow(puzzle){
+
+    const row = document.createElement('tr');
+
+    const emptyCell = document.createElement('td');
+    row.appendChild(emptyCell);
+
+    for (let i = 0; i < puzzle.ColumnCount; i++) {
+        let cell = document.createElement('td');
+
+        // TODO add groups info
+        
+        row.appendChild(cell);
+    }
+
+    return row;
 }

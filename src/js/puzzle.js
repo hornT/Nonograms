@@ -63,7 +63,7 @@ class Puzzle{
 
     _parseColumns(lines){
 
-        this.RowsInfo = lines
+        this.ColumnsInfo = lines
             .splice(0, this.ColumnCount)
             .map(this._parseCellsInfo.bind(this));
     }
@@ -78,20 +78,20 @@ class Puzzle{
         for (let i = 0; i < count; i++) {
 
             let left = i * 4 + 1;
-            let cellInfo = s.slice(left, left + 4);
+            let groupInfo = s.slice(left, left + 4);
 
-            result.push(this._parseCellInfo(cellInfo));
+            result.push(this._parseGroupInfo(groupInfo));
         }
 
         return result;
     }
 
-    _parseCellInfo(cellInfo){
+    _parseGroupInfo(groupInfo){
 
-        let cellCount = parseInt(cellInfo[0]);
-        let r = parseInt(cellInfo[1]);
-        let g = parseInt(cellInfo[2]);
-        let b = parseInt(cellInfo[3]);
+        let cellCount = parseInt(groupInfo[0]);
+        let r = parseInt(groupInfo[1]);
+        let g = parseInt(groupInfo[2]);
+        let b = parseInt(groupInfo[3]);
 
         return {
             Count: cellCount,

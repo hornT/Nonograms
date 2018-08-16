@@ -21,4 +21,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }  
+  }
+
+.puzzle{
+
+}
+.puzzle table{
+
+}
+.puzzle table td{
+    width: 10px;
+    height: 10px;
+}
+
+table{
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
