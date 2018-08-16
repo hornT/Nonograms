@@ -113,6 +113,16 @@ function createFirstRow(puzzle){
         let cell = document.createElement('td');
 
         // TODO add groups info
+        const columnInfo = puzzle.ColumnsInfo[i];
+
+        for(let j = 0; j < columnInfo.length; j++){
+            let span = document.createElement('div');
+            span.innerHTML = columnInfo[j].Count;
+            // TODO color span.
+
+            cell.appendChild(span);
+        }
+        
         
         row.appendChild(cell);
     }

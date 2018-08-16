@@ -29,7 +29,6 @@ class Puzzle{
          * l - длина, rgb цвет в int формате
          */
 
-
         this._parseColors(lines);
         this._parseGridSize(lines);
         this._parseRows(lines);
