@@ -1,3 +1,7 @@
+:root {
+    --cell-size: 20px;
+}
+
 #dropZone.hover {
     background: #ddd;
     border-color: #aaa;
@@ -23,20 +27,28 @@
     justify-content: center;
   }
 
-.puzzle{
+.puzzle {
 
 }
-.puzzle table{
+.puzzle table {
 
 }
-.puzzle table td{
-    width: 10px;
-    height: 10px;
+.puzzle table td {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    min-width: var(--cell-size);
+    min-height: var(--cell-size);
 }
 
-table{
+table {
     border-collapse: collapse;
 }
-table, th, td {
+table, td {
     border: 1px solid black;
+}
+tr:first-child span {
+    display: inline-block;
+}
+td:first-child {
+    text-align:end;
 }
