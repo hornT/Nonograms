@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 'use strict';
 
 $(document).ready(function () {
@@ -59,7 +60,22 @@ function fileChange(e) {
  * @param {any} fileName
  */
 function onFileLoad(e, fileName) {
-    const data = e.target.result;
 
-    log(1);
+    const data = e.target.result;
+    const fileText = atob(data.split(',')[1]);
+
+    const puzzle = new Puzzle(fileText);
+    
+
+    //drowPuzzle(puzzle);
+    puzzle.Solve();
+    drowSolvedPuzzle(puzzle);
+}
+
+// function drowPuzzle(puzzle){
+
+// }
+
+function drowSolvedPuzzle(puzzle){
+
 }
